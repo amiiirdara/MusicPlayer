@@ -27,7 +27,6 @@ open class G : Application() {
         lateinit var applicationContext: Context
         lateinit var language: Lang
         var config: Configurator? = null
-
             set(value) {
                 field = value
                 value?.config()
@@ -49,8 +48,13 @@ open class G : Application() {
     }
 
 
-     fun copyToClipBoard(text: String, context: Context = currentActivity, label : String = "Copied Text") {
-        val clipboardManager: ClipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    fun copyToClipBoard(
+        text: String,
+        context: Context = currentActivity,
+        label: String = "Copied Text"
+    ) {
+        val clipboardManager: ClipboardManager =
+            context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         // Create a ClipData object
         val clipData: ClipData = ClipData.newPlainText(label, text)
         // Set the ClipData object to the ClipboardManager
@@ -59,7 +63,7 @@ open class G : Application() {
     }
 
     @Throws(IOException::class)
-     fun takeScreenshotAndShare(view: View , fileName: String = "screenshot.png") {
+    fun takeScreenshotAndShare(view: View, fileName: String = "screenshot.png") {
         val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         view.draw(canvas)
@@ -67,15 +71,20 @@ open class G : Application() {
         val outputStream = FileOutputStream(file)
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
         outputStream.close()
-        val copiedFile = File(view.context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName)
-        val uri = FileProvider.getUriForFile(view.context, "com.example.dropnote.fileprovider", copiedFile)
+        val copiedFile =
+            File(view.context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName)
+        val uri = FileProvider.getUriForFile(
+            view.context,
+            "com.example.dropnote.fileprovider",
+            copiedFile
+        )
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.setType("image/png")
         shareIntent.putExtra(Intent.EXTRA_STREAM, uri)
         view.context.startActivity(shareIntent)
     }
 
-    fun phoneNumberFinder(text :String , numList:ArrayList<String>) {
+    fun phoneNumberFinder(text: String, numList: ArrayList<String>) {
         val regex = "((\\+98)|0)?9\\d{9}"
         val pattern = Pattern.compile(regex)
 
@@ -98,7 +107,7 @@ open class G : Application() {
     }
 
 
-    fun persianNumToEnglish(persianStr: String):String {
+    fun persianNumToEnglish(persianStr: String): String {
         var result = ""
         var en = '0'
         for (ch in persianStr) {
@@ -120,7 +129,7 @@ open class G : Application() {
         return result
     }
 
-    fun lineThroughTextView(textView :TextView) {
+    fun lineThroughTextView(textView: TextView) {
         textView.paintFlags = textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
     }
 

@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="SearchView"
+    <item
         android:id="@+id/menu_searchView"
         android:icon="@drawable/baseline_search_24"
+        android:title="SearchView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="collapseActionView|always"
-        />
-    <item android:title="Online playlist"
+        app:showAsAction="collapseActionView|always" />
+    <item
         android:id="@+id/menu_online"
         android:icon="@drawable/baseline_library_music_24"
-        app:showAsAction="always"
-        />
+        android:title="Online playlist"
+        app:showAsAction="always" />
 
 
 </menu>

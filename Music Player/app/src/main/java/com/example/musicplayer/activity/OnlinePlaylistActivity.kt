@@ -63,8 +63,7 @@ class OnlinePlaylistActivity : XActivity() {
 
         musicsCall.enqueue(object : Callback<ArrayList<MusicResponse>> {
             override fun onResponse(
-                call: Call<ArrayList<MusicResponse>>,
-                response: Response<ArrayList<MusicResponse>>
+                call: Call<ArrayList<MusicResponse>>, response: Response<ArrayList<MusicResponse>>
             ) {
                 if (response.body() != null) {
                     progressBar.visibility = View.INVISIBLE
@@ -74,11 +73,7 @@ class OnlinePlaylistActivity : XActivity() {
                         Debug.logInfo("Music Added!")
                         songItemsList.add(
                             SongItem(
-                                item.duration,
-                                item.name,
-                                item.detail,
-                                item.url,
-                                item.imageUrl
+                                item.duration, item.name, item.detail, item.url, item.imageUrl
                             )
                         )
                     }

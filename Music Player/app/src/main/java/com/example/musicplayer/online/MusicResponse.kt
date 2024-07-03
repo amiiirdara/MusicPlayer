@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 class MusicResponse {
     @SerializedName("id")
-    var id: String  = ""
+    var id: String = ""
 
     @SerializedName("name")
-    var name: String  = ""
+    var name: String = ""
 
     @SerializedName("detail")
     var detail: String = ""
@@ -16,9 +16,9 @@ class MusicResponse {
     var duration: Long = 0
 
     @SerializedName("url")
-    var url: String  = ""
+    var url: String = ""
 
     @SerializedName("imageUrl")
-    var imageUrl: String  = ""
+    var imageUrl: String = ""
 
 }

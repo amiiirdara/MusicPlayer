@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PermissionActivity">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -133,8 +131,6 @@
             app:layout_constraintTop_toTopOf="@+id/btn_playSingle" />
 
 
-
-
         <Button
             android:id="@+id/btn_repeatSingleRed"
             android:layout_width="78dp"
@@ -150,6 +146,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btn_nextSingle"
             app:layout_constraintTop_toTopOf="@+id/btn_nextSingle" />
+
         <Button
             android:id="@+id/btn_repeatSingle"
             android:layout_width="78dp"
@@ -165,7 +162,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btn_nextSingle"
             app:layout_constraintTop_toTopOf="@+id/btn_nextSingle" />
-
 
 
         <Button
@@ -268,8 +264,8 @@
             android:id="@+id/cns_headSheet"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="2dp"
             android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
             android:background="@drawable/bg_img_round2"
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toEndOf="parent"
@@ -277,13 +273,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-
             <Button
                 android:id="@+id/btn_pauseHead"
                 android:layout_width="35dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="7dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="7dp"
                 android:backgroundTint="@color/background"
                 app:icon="@drawable/baseline_pause_circle_outline_24"
                 app:iconGravity="textStart"
@@ -295,12 +290,13 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/btn_prevoiusHead"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <Button
                 android:id="@+id/btn_playHead"
                 android:layout_width="35dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="7dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="7dp"
                 android:backgroundTint="@color/background"
                 app:icon="@drawable/baseline_play_circle_outline_24"
                 app:iconGravity="textStart"
@@ -376,10 +372,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 app:cardCornerRadius="150dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"

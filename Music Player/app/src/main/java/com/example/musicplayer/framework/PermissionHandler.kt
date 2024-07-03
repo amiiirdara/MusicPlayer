@@ -12,6 +12,7 @@ class PermissionHandler(val permissions: List<String>, props: MethodBlock<Permis
     companion object {
         var lastRequestCode: Int = 0
     }
+
     private var activity = G.currentActivity
     private var requestCode: Int = ++lastRequestCode
 

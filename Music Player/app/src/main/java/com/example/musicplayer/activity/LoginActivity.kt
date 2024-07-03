@@ -27,8 +27,8 @@ class LoginActivity : XActivity() {
     private lateinit var edtUsername: EditText
     private lateinit var btnLogin: Button
     private lateinit var txtGoToRegister: TextView
-    private lateinit var progressBar : ProgressBar
-    private lateinit var rootCardView : ConstraintLayout
+    private lateinit var progressBar: ProgressBar
+    private lateinit var rootCardView: ConstraintLayout
 
 
     private var username = ""
@@ -95,8 +95,8 @@ class LoginActivity : XActivity() {
         }
 
         txtGoToRegister.setOnClickListener {
-                val intent = Intent(this, RegisterActivity::class.java)
-                startActivity(intent)
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
     }
@@ -117,9 +117,10 @@ class LoginActivity : XActivity() {
         btnLogin = findViewById(R.id.loginButton)
         txtGoToRegister = findViewById(R.id.loginRegister)
         progressBar = findViewById(R.id.loginProgressbar)
-        rootCardView =findViewById(R.id.loginCardView)
+        rootCardView = findViewById(R.id.loginCardView)
 
     }
+
     private fun loadInfo() {
         val sharedPreferences = getSharedPreferences("logInInfo", MODE_PRIVATE)
         if (sharedPreferences.contains("phoneNumber")) {
@@ -129,6 +130,7 @@ class LoginActivity : XActivity() {
             startHomeActivity()
         }
     }
+
     private fun saveInfo() {
         val sharedPreferences = getSharedPreferences("logInInfo", MODE_PRIVATE)
         val editor = sharedPreferences.edit().apply {
@@ -140,11 +142,12 @@ class LoginActivity : XActivity() {
         }
         startHomeActivity()
     }
+
     private fun startHomeActivity() {
-        val intent  = Intent(this@LoginActivity , MainActivity::class.java)
-        intent.putExtra("email" , email)
-        intent.putExtra("phoneNumber" , username)
-        intent.putExtra("password" , password)
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        intent.putExtra("email", email)
+        intent.putExtra("phoneNumber", username)
+        intent.putExtra("password", password)
         startActivity(intent)
         finish()
     }

@@ -34,8 +34,8 @@ class RegisterActivity : XActivity() {
     private lateinit var edtUsername: EditText
     private lateinit var btnRegister: Button
     private lateinit var txtGoToLogin: TextView
-    private lateinit var progressBar : ProgressBar
-    private lateinit var rootCardView : ConstraintLayout
+    private lateinit var progressBar: ProgressBar
+    private lateinit var rootCardView: ConstraintLayout
 
 
     private var phoneNumber = ""
@@ -54,23 +54,25 @@ class RegisterActivity : XActivity() {
     }
 
 
-    private fun assignViews () {
+    private fun assignViews() {
         edtPassword = findViewById(R.id.registerPassword)
         edtPhoneNumber = findViewById(R.id.registerPhoneNumber)
         edtUsername = findViewById(R.id.registerUsername)
-        btnRegister =findViewById(R.id.register)
+        btnRegister = findViewById(R.id.register)
         txtGoToLogin = findViewById(R.id.registerLogin)
-        progressBar =findViewById(R.id.registerProgressBar)
+        progressBar = findViewById(R.id.registerProgressBar)
         rootCardView = findViewById(R.id.registerRootCardView)
     }
+
     private fun setAnimation() {
-        val animView : LottieAnimationView = findViewById(R.id.registerAnimation)
+        val animView: LottieAnimationView = findViewById(R.id.registerAnimation)
         animView.setAnimationFromUrl("http://androidyad.ir/api/musicPlayer/anim2.json")
     }
 
     private fun setPasswordChecker() {
 
-        val passwordStrengthMeter : PasswordStrengthMeter = findViewById(R.id.registerPasswordInputMeter)
+        val passwordStrengthMeter: PasswordStrengthMeter =
+            findViewById(R.id.registerPasswordInputMeter)
         passwordStrengthMeter.setEditText(edtPassword)
 
         passwordStrengthMeter.setPasswordStrengthCalculator(object : PasswordStrengthCalculator {
@@ -120,7 +122,6 @@ class RegisterActivity : XActivity() {
             }
 
 
-
             override fun passwordAccepted(level: Int): Boolean {
                 return level > 3
             }
@@ -153,7 +154,7 @@ class RegisterActivity : XActivity() {
                 return@setOnClickListener
             }
 
-            if (edtPhoneNumber.text.isEmpty()){
+            if (edtPhoneNumber.text.isEmpty()) {
                 edtPhoneNumber.error = "PhoneNumber cannot be empty!"
                 return@setOnClickListener
             }
@@ -169,10 +170,11 @@ class RegisterActivity : XActivity() {
 
             password = edtPassword.text.toString()
             phoneNumber = edtPhoneNumber.text.toString()
-            username= edtUsername.text.toString()
+            username = edtUsername.text.toString()
 
             val apiInterface = API.getApi().create(ApiInterface::class.java)
-            val logInCall: Call<ArrayList<RegisterResponse>> = apiInterface.registerCall(phoneNumber , password , username)
+            val logInCall: Call<ArrayList<RegisterResponse>> =
+                apiInterface.registerCall(phoneNumber, password, username)
 
             logInCall.enqueue(object : Callback<ArrayList<RegisterResponse>> {
 
@@ -208,7 +210,7 @@ class RegisterActivity : XActivity() {
                 override fun onFailure(call: Call<ArrayList<RegisterResponse>>, t: Throwable) {
                     progressBar.visibility = View.INVISIBLE
                     rootCardView.alpha = 1f
-                    Log.i("Amir","Register Call  : " + t.message.toString())
+                    Log.i("Amir", "Register Call  : " + t.message.toString())
                     MToast("Please Check Your Internet Connection!")
                 }
 
@@ -216,13 +218,13 @@ class RegisterActivity : XActivity() {
         }
 
         txtGoToLogin.setOnClickListener {
-            startActivity(Intent(this@RegisterActivity , LoginActivity::class.java))
+            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
             finish()
         }
 
     }
 
-    private fun saveInfo(){
+    private fun saveInfo() {
         val sharedPreferences = getSharedPreferences("logInInfo", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("password", password)

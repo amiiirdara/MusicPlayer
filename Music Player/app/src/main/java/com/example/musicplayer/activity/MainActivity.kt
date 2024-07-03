@@ -27,10 +27,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicplayer.MySongAdapter
 import com.example.musicplayer.OnSongItemClickListener
-import com.example.musicplayer.framework.PermissionHandler
 import com.example.musicplayer.R
 import com.example.musicplayer.SongItem
-import com.example.musicplayer.framework.Debug
 import com.example.musicplayer.framework.XActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import java.util.concurrent.TimeUnit
@@ -225,7 +223,7 @@ class MainActivity : XActivity() {
 
 
         val inflater: MenuInflater = menuInflater;
-        inflater.inflate(R.menu.menu_actionbar, menu)
+        inflater.inflate(R.menu.menu_action_bar, menu)
         val searchView = (menu!!.findItem(R.id.menu_searchView).actionView as SearchView?)!!
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -272,8 +270,7 @@ class MainActivity : XActivity() {
         backgroundArray[7] = R.drawable.bg_gradient8
         backgroundArray[8] = R.drawable.bg_gradient9
 
-        bottomSheet.addBottomSheetCallback(object :
-            BottomSheetBehavior.BottomSheetCallback() {
+        bottomSheet.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 // handle onSlide
@@ -485,15 +482,13 @@ class MainActivity : XActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId==R.id.menu_online){
-            val intent = Intent(this@MainActivity,OnlinePlaylistActivity::class.java)
+        if (item.itemId == R.id.menu_online) {
+            val intent = Intent(this@MainActivity, OnlinePlaylistActivity::class.java)
             startActivity(intent)
             return true
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 
 
     override fun onBackPressed() {

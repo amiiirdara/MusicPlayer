@@ -6,8 +6,8 @@ class Debug {
 
     companion object {
 
-         var logTag = "Amir"
-         var logLevel = LOG_LEVEL.INFO
+        var logTag = "Amir"
+        var logLevel = LOG_LEVEL.INFO
 
         fun logVerbose(message: Any) = log(LOG_LEVEL.VERBOSE, message)
         fun logDebug(message: Any) = log(LOG_LEVEL.DEBUG, message)

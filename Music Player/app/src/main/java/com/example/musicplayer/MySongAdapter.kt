@@ -45,19 +45,12 @@ class MySongAdapter(var list: ArrayList<SongItem>, val listener: OnSongItemClick
 
 
         //Set the cover of song
-        if (item.songImageString!=null){
-            Glide.with(holder.img_cover.context)
-                .load(item.songImageString)
-                .into(holder.img_cover)
-        } else{
-            Glide.with(holder.img_cover.context)
-                .load(item.songImageUri)
-                .into(holder.img_cover)
+        if (item.songImageString != null) {
+            Glide.with(holder.img_cover.context).load(item.songImageString).into(holder.img_cover)
+        } else {
+            Glide.with(holder.img_cover.context).load(item.songImageUri).into(holder.img_cover)
 
         }
-
-
-
 
 
         //Set the duration of song
@@ -65,8 +58,9 @@ class MySongAdapter(var list: ArrayList<SongItem>, val listener: OnSongItemClick
         val songDuration = String.format(
             "%2d:%02d",
             TimeUnit.MILLISECONDS.toMinutes(item.songDuration!!),
-            TimeUnit.MILLISECONDS.toSeconds(item.songDuration!!) -
-                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(item.songDuration!!))
+            TimeUnit.MILLISECONDS.toSeconds(item.songDuration!!) - TimeUnit.MINUTES.toSeconds(
+                TimeUnit.MILLISECONDS.toMinutes(item.songDuration!!)
+            )
         )
 
         holder.txt_songTime.text = songDuration
@@ -109,8 +103,6 @@ class MySongAdapter(var list: ArrayList<SongItem>, val listener: OnSongItemClick
         return header
 
     }
-
-
 
 
 }

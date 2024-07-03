@@ -3,13 +3,12 @@
 
     <corners
         android:topLeftRadius="35dp"
-        android:topRightRadius="35dp"/>
+        android:topRightRadius="35dp" />
     <gradient
-        android:type="linear"
-        android:startColor="#FF3C3C"
-        android:endColor="#E355DC"
         android:angle="270"
-        >
+        android:endColor="#E355DC"
+        android:startColor="#FF3C3C"
+        android:type="linear">
 
     </gradient>
 </shape>

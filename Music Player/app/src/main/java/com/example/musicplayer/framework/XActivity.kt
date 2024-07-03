@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.musicplayer.config.Config
 
-abstract class XActivity: AppCompatActivity() {
+abstract class XActivity : AppCompatActivity() {
     private val permissionHandlers = mutableListOf<PermissionHandler>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,10 +37,19 @@ abstract class XActivity: AppCompatActivity() {
         Debug.logWarning("Activity ${this::class.java.simpleName} Started")
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         for (permissionHandler in permissionHandlers) {
-            if (permissionHandler.processOnPermissionResult(requestCode, permissions, grantResults)) {
+            if (permissionHandler.processOnPermissionResult(
+                    requestCode,
+                    permissions,
+                    grantResults
+                )
+            ) {
                 return
             }
         }
@@ -51,7 +60,7 @@ abstract class XActivity: AppCompatActivity() {
     }
 
     fun openAppSettings() {
-        Toast.makeText(this , "Please Allow permissions in app settings" , Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Please Allow permissions in app settings", Toast.LENGTH_LONG).show()
         val intent = Intent()
         intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
         val uri = Uri.fromParts("package", packageName, null)
@@ -60,8 +69,8 @@ abstract class XActivity: AppCompatActivity() {
         finish()
     }
 
-    private fun initializeConfigurator () {
-        if (G.config ==null) {
+    private fun initializeConfigurator() {
+        if (G.config == null) {
             G.config = Config()
         }
     }

@@ -19,10 +19,12 @@ import com.example.musicplayer.framework.MToast
 import java.util.concurrent.TimeUnit
 
 
-class OnlineSongAdapter(var list: ArrayList<SongItem>) : RecyclerView.Adapter<OnlineSongAdapter.ViewHolder>(){
+class OnlineSongAdapter(var list: ArrayList<SongItem>) :
+    RecyclerView.Adapter<OnlineSongAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.single_item_online, parent, false)
+        val v =
+            LayoutInflater.from(parent.context).inflate(R.layout.single_item_online, parent, false)
         return ViewHolder(v)
     }
 
@@ -35,13 +37,13 @@ class OnlineSongAdapter(var list: ArrayList<SongItem>) : RecyclerView.Adapter<On
         holder.txt_detail.text = item.songDetail
 
 
-
         //Set the cover of song
         Glide.with(holder.img_cover.context).load(item.songImageString).into(holder.img_cover)
 
         //Set the duration of song
 
-        val songDuration = String.format("%2d:%02d",
+        val songDuration = String.format(
+            "%2d:%02d",
             TimeUnit.MILLISECONDS.toMinutes(item.songDuration!!),
             TimeUnit.MILLISECONDS.toSeconds(item.songDuration!!) -
                     TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(item.songDuration!!))
@@ -51,7 +53,7 @@ class OnlineSongAdapter(var list: ArrayList<SongItem>) : RecyclerView.Adapter<On
 
         holder.btnAdd.setOnClickListener {
             MToast("Download Started!")
-            downloadFile(holder.img_cover.context , item.songUrl!! , "${item.songName}.mp3")
+            downloadFile(holder.img_cover.context, item.songUrl!!, "${item.songName}.mp3")
         }
 
     }
@@ -63,7 +65,7 @@ class OnlineSongAdapter(var list: ArrayList<SongItem>) : RecyclerView.Adapter<On
     }
 
     //the class is holding the list view
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var txt_title: TextView = itemView.findViewById(R.id.txt_onlineName)
         var txt_detail: TextView = itemView.findViewById(R.id.txt_onlineDetail)
         var txt_songTime: TextView = itemView.findViewById(R.id.txt_onlineDuration)
@@ -89,10 +91,6 @@ class OnlineSongAdapter(var list: ArrayList<SongItem>) : RecyclerView.Adapter<On
         // Enqueue the download request
         downloadManager.enqueue(request)
     }
-
-
-
-
 
 
 }
